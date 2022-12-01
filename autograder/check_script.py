@@ -91,7 +91,7 @@ shutil.copy("checker.py", working_directory)
 if args.extra_files is not None:
     for path in args.extra_files:
         shutil.copy(path, working_directory)
-        shutil.copy(path, "./")
+        shutil.copy(path, "../src/")
         checker_files.append(path.split("/")[-1])
 
 
