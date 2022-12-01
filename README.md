@@ -7,6 +7,11 @@ An autograder for small python assignments
 ## Project organization
 
 ```
+Legend:
+PG: Project Generated
+RO: Read Only
+HW: Human Written
+
 .
 ├── .gitignore
 ├── CITATION.md
