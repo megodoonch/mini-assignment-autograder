@@ -43,7 +43,7 @@ class HWChecker(Checker):
         """
 
         # import sid-hello.py
-        hello = importlib.import_module(self.module_file_name(0))
+        hello = importlib.import_module(self.module_file_path(0))
 
         # check variables etc
         try:

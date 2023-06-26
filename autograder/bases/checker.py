@@ -43,11 +43,11 @@ class Checker(ABC):
         """
         :param sid: student id number
         """
-        self.csv = f"{self.project}.csv"
+        # self.csv = f"{self.project}.csv"
         self.sid = sid
         self.comments = ""
         self.show_subtractions = False  # if True, prints the subtracted marks for each infraction
-        self.full_points_if_runs = True  # if True, students lose points only for code that throws errors
+        self.full_points_if_runs = False  # if True, students lose points only for code that throws errors
         self.max_output_grade = 1  # report mark out of 1 since it's worth only 1%
         self.max_internal_grade = 10  # max score for the grader, traditionally 10
         self.min_internal_grade = self.max_internal_grade / 2   # this'll replace their mark if it goes below it
@@ -64,18 +64,18 @@ class Checker(ABC):
         Returns:
             str: {self.modules[n]}
         """
-        return self.modules[n]
+        return f"{self.modules[n]}"
 
-    def module_file_name(self, n=0):
+    def module_file_path(self, n=0):
         """
         Makes the file name for the nth module of self.modules
         Args:
             n: int: which module
 
         Returns:
-            str: f"{self.sid}_{self.modules[n]}.py"
+            str: f"{self.id}/{self.modules[n]}.py"
         """
-        return f"{self.module_name(n)}.py"
+        return f"{self.sid}/{self.modules[n]}.py"
 
     def script_checker(self):
         """
@@ -100,7 +100,7 @@ class Checker(ABC):
         Override it if you want a different behaviour, e.g. pass
         """
         for i in range(len(self.modules)):
-            command = f"python importer.py {self.module_name(0)}"
+            command = f"python importer.py {self.module_name(i)}"
             try:
                 import_output = subprocess.check_output(command.split(), timeout=10).decode("utf-8").strip()
                 if len(import_output) > 0:
@@ -156,9 +156,10 @@ class Checker(ABC):
         self.comments = f"Score {self.grade}/{self.max_output_grade}; Comments: {self.comments}"
 
         # write to csv
-        with open(self.csv, 'a') as f:
-            writer = csv.writer(f, dialect='unix')
-            writer.writerow([self.sid, self.grade, self.comments])
+        # with open(self.csv, 'a') as f:
+        #     writer = csv.writer(f, dialect='unix')
+        #     writer.writerow([self.sid, self.grade, self.comments])
+        return self.grade, self.comments
 
 
 def trunc(text, length=100):
