@@ -1,0 +1,97 @@
+<html>
+ <body>
+  <h2>
+   Mini-assignment 4
+  </h2>
+  <p>
+   <strong>
+    Filename
+   </strong>
+   <code>
+    alice.py
+   </code>
+  </p>
+  <p>
+   Write a script that will use NLTK's Gutenberg plaintext corpus
+   <code>
+    "carroll-alice.txt"
+   </code>
+   to find the five most common words that directly follow the word
+   <code>
+    "Alice"
+   </code>
+   in Alice in Wonderland.
+  </p>
+  <p>
+   When run as a script, it should print, in decreasing order of frequency, each word and its count on its own line, separated by a space, like this:
+  </p>
+  <pre><code>laughed 29
+sang 24
+i 10
+slept 2
+spoke 2
+</code></pre>
+  <p>
+   If two words have the same frequency, either order is fine. (Note these are not the right answers!)
+  </p>
+  <p>
+   Use the
+   <code>
+    words()
+   </code>
+   method of the NLTK corpus. This will get you an iterable over words in the text that crosses sentence boundaries, so if a sentence ends with
+   <code>
+    Alice
+   </code>
+   , the first word of the next sentence counts as a word that follows
+   <code>
+    Alice
+   </code>
+   .
+  </p>
+  <p>
+   Like in Homework 1, skip over words that consist entirely of punctuation marks, so in
+   <code>
+    Alice, the hare, and the hatter
+   </code>
+   ,
+   <code>
+    the
+   </code>
+   follows
+   <code>
+    Alice
+   </code>
+   , even though there's an intervening comma.
+  </p>
+  <p>
+   Treat words as case-
+   <strong>
+    in
+   </strong>
+   sensitive. That is,
+   <code>
+    The
+   </code>
+   and
+   <code>
+    the
+   </code>
+   count as the same word. Note:
+   <code>
+    Alice
+   </code>
+   is always capitalized, so it doesn't matter if you lower-case it or not.
+  </p>
+  <p>
+   If imported as a module, your script shouldn't print anything or read or write any files. It may import modules, or define functions or classes, but not run them.
+  </p>
+  <p>
+   Save it as
+   <code>
+    alice.py
+   </code>
+   .
+  </p>
+ </body>
+</html>

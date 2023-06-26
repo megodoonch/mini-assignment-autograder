@@ -61,6 +61,7 @@ class SubmissionsChecker():
             if file.endswith(".py") and file != "checker.py" and file != "hw_checker.py":
                 current_id, module = extract_id_and_module_from_file_name(file)
                 os.makedirs(f"{self.working_directory}/{current_id}")
+                print(f"made directory {self.working_directory}/{current_id}")
                 os.rename(f"{self.working_directory}/{file}",
                           f"{self.working_directory}/{student_module_path(module, current_id)}")
                 ids.append(current_id)

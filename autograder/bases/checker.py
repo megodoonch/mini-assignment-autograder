@@ -1,4 +1,5 @@
 import csv
+import io
 from abc import ABC, abstractmethod
 import subprocess
 import importlib
@@ -55,6 +56,7 @@ class Checker(ABC):
         self.min_output_grade = self.min_internal_grade * (self.max_output_grade / self.max_internal_grade)
         self.unusable = False
 
+
     def module_name(self, n=0):
         """
         makes the module name for the nth module of self.modules
@@ -99,14 +101,19 @@ class Checker(ABC):
         Default behaviour: checks that nothing was printed on import.
         Override it if you want a different behaviour, e.g. pass
         """
+
         for i in range(len(self.modules)):
-            command = f"python importer.py {self.module_name(i)}"
             try:
-                import_output = subprocess.check_output(command.split(), timeout=10).decode("utf-8").strip()
-                if len(import_output) > 0:
+                output_capture = io.StringIO()
+                sys.stdout = output_capture
+                mod = importlib.import_module(f'{self.project}.marking.{self.sid}.{self.module_name(i)}')
+                output_string = output_capture.getvalue()
+                # put stout back to normal
+                sys.stdout = sys.__stdout__
+                if len(output_string) > 0:
                     self.lower_score(
                         2,
-                        f"{self.modules[i]} shouldn't print when called as a module, but it prints {trunc(import_output)}"
+                        f"{self.modules[i]} shouldn't print when called as a module, but it prints {trunc(output_string)}"
                     )
             except subprocess.CalledProcessError as e:
                 self.lower_score(10, f"importing {self.modules[i]} raised error: {e.output}")

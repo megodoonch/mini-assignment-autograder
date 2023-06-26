@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>alice.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+</head>
+
+<body>
+
+<h2>Mini-assignment</h2>
+
+<p><strong>Filename</strong> <code>alice.py</code></p>
+
+<p>Write a script that will use NLTK's Gutenberg plaintext corpus <code>"carroll-alice.txt"</code> to find the five most common words that directly follow the word <code>"Alice"</code> in Alice in Wonderland. </p>
+
+<p>When run as a script, it should print, in decreasing order of frequency, each word and its count on its own line, separated by a space, like this:</p>
+
+<pre><code>laughed 29
+sang 24
+i 10
+slept 2
+spoke 2
+</code></pre>
+
+<p>If two words have the same frequency, either order is fine.</p>
+
+<p>Use the <code>words()</code> method of the NLTK corpus. This will get you an iterable over words in the text that crosses sentence boundaries, so if a sentence ends with <code>Alice</code>, the first word of the next sentence counts as a word that follows <code>Alice</code>. </p>
+
+<p>Treat words as case-<strong>in</strong>sensitive. That is, <code>The</code>, <code>THE</code>, and <code>the</code> count as the same word, and same with <code>ALICE</code>, <code>Alice</code>, etc.</p>
+
+<p>Skip over words that consist entirely of punctuation marks, so in <code>Alice, the hare, and the hatter</code>, <code>the</code> follows <code>Alice</code>, even though there's an intervening comma. I recommend a list comprehension with regular expressions to remove all punctuation from the corpus, e.g.:</p>
+
+<p><code>words = [w.lower() for w in words if re.search(r'\w', w)]</code></p>
+
+<p>If imported as a module, your script shouldn't print anything or read or write any files. It may import modules, or define functions or classes, but not run them.</p>
+
+<p>Save it as <code>alice.py</code>.</p>
+
+</body>
+</html>

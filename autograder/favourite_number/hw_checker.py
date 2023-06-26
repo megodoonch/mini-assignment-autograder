@@ -13,12 +13,18 @@ class HWChecker(Checker):
         self.modules = ["my_number"]
         # the name of the directory, checker file, and csv file
         self.project = "favourite_number"
+        self.module_import_path = f'{self.project}.marking.{self.sid}.{self.module_name(0)}'
 
     def script_checker(self):
         """
         should print My favourite number is <n> where <n> is a number
         """
-        output_string = subprocess.check_output(["python", self.module_file_path()]).decode("utf-8")
+        try:
+            output_string = subprocess.check_output(["python", self.module_file_path()]).decode("utf-8")
+        except subprocess.CalledProcessError as grepexc:
+            print("error code", grepexc.returncode, grepexc.output)
+
+
         lines = output_string.split("\n")
         text = lines[0]
         text = text.strip("\n")
