@@ -153,6 +153,7 @@ class Checker(ABC):
             self.grade = self.min_internal_grade
 
         self.grade = self.grade * (self.max_output_grade / self.max_internal_grade)
+        self.grade = round(self.grade, 3)
         self.comments = f"Score {self.grade}/{self.max_output_grade}; Comments: {self.comments}"
 
         # write to csv

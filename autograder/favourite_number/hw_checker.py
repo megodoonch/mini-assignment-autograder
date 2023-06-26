@@ -93,7 +93,7 @@ class HWChecker(Checker):
                     elif line != "hooray!":
                         self.lower_score(0.5, f"line {i} is {trunc(line)} but should be hooray!")
                     i += 1
-                if len(output_lines) > 5 and not (output_lines[i] is None or line.strip() == ""):
+                if len(output_lines) > 5 and not (output_lines[i] is None or output_lines[i].strip() == ""):
                     self.add_comment("extra line of print")
 
         except Exception as e:
