@@ -8,3 +8,6 @@
 
 # exclude Pycharm stuff
 .idea
+/autograder/favourite_number/marking/
+/autograder/module_script/marking/
+/autograder/nth/marking/
