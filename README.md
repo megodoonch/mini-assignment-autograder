@@ -22,6 +22,25 @@ python check_script.py -p project_path -s path_to_spreadsheet_from_blackboard
 
 If you're testing it out and don't want to write to the spreadsheet yet, just use `-p`
 
+
+## Under construction warning
+
+These ones work:
+
+* alice
+* favourite_number   
+* module_script
+* nth
+
+These aren't updated yet:
+
+* categories
+* every_nth_word (is this just nth?)
+* id_printer (maybe this is obsolete?)
+* tags
+* pickling (is this tags?)
+
+
 ## Project organization
 
 ```
