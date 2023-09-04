@@ -11,7 +11,8 @@ from pathlib import Path
 from bases.checker import student_module_path
 
 # update this for your computer: the more permanent place where you want the spreadsheet copied to
-local_path_for_marks = "~/Documents/UU_teaching/student-data/introCL/introCL2023/minis/"
+local_path_for_marks = f"results/DTaM/2023/"  # "~/Documents/UU_teaching/student-data/introCL/introCL2023/minis/"
+
 
 def extract_id_and_module_from_file_name(file_name):
     """
@@ -64,7 +65,6 @@ class SubmissionsChecker():
         self.local_marks_path = local_path_for_marks
         self.local_marks_path += self.project
         self.local_marks_path = Path(self.local_marks_path).expanduser()
-
 
     def set_up_working_directory(self):
         """

@@ -17,20 +17,11 @@ For me, if student with id 0512784 hands in Mini-Assignment 0 by submitting a fi
 You'll also need to update local_marks_path
 """
 
-from all_submissions_checker import SubmissionsChecker
-import csv
-import shutil
-import subprocess
-import os
+from autograder.all_submissions_checker import SubmissionsChecker
 import argparse
-import zipfile
-from pathlib import Path
-
-from bases.checker import student_module_path
-from bases.checker import Checker
 
 # This is the parent directory where the output will be saved to. Update it for your system.
-local_marks_path = "~/Documents/UU_teaching/student-data/introCL/introCL2023/minis/"
+local_marks_path = "/home/meaghan/Documents/uu_student_data/student-data/digital_tools/2023/minis/"
 
 
 # get the command line arguments

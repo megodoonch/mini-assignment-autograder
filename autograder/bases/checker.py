@@ -77,7 +77,7 @@ class Checker(ABC):
         Returns:
             str: f"{self.id}/{self.modules[n]}.py"
         """
-        return f"{self.sid}/{self.modules[n]}.py"
+        return f"data/processed/{self.project}/{self.sid}/{self.modules[n]}.py"
 
     def script_checker(self):
         """
@@ -106,7 +106,6 @@ class Checker(ABC):
             try:
                 output_capture = io.StringIO()
                 sys.stdout = output_capture
-                mod = importlib.import_module(f'{self.project}.marking.{self.sid}.{self.module_name(i)}')
                 output_string = output_capture.getvalue()
                 # put stout back to normal
                 sys.stdout = sys.__stdout__
