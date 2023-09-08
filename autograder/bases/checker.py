@@ -56,7 +56,6 @@ class Checker(ABC):
         self.min_output_grade = self.min_internal_grade * (self.max_output_grade / self.max_internal_grade)
         self.unusable = False
 
-
     def module_name(self, n=0):
         """
         makes the module name for the nth module of self.modules
@@ -77,7 +76,7 @@ class Checker(ABC):
         Returns:
             str: f"{self.id}/{self.modules[n]}.py"
         """
-        return f"data/processed/{self.project}/{self.sid}/{self.modules[n]}.py"
+        return f"{self.sid}/{self.modules[n]}.py"
 
     def script_checker(self):
         """
@@ -85,6 +84,9 @@ class Checker(ABC):
         :return:
         """
         pass
+
+    def module_import_path(self, n=0):
+        return f'{self.sid}.{self.module_name(n)}'
 
     def module_checker(self):
         """

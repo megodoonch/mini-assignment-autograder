@@ -8,7 +8,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-from bases.checker import student_module_path
+from autograder.bases.checker import student_module_path
 
 # update this for your computer: the more permanent place where you want the spreadsheet copied to
 local_path_for_marks = f"results/DTaM/2023/"  # "~/Documents/UU_teaching/student-data/introCL/introCL2023/minis/"
@@ -56,7 +56,7 @@ class SubmissionsChecker():
         self.project = project_parts[-1]
         self.project_path = project_path
         self.csv = f"{self.project}.csv"
-        self.working_directory = f"{self.project_path}/marking/"
+        self.working_directory = f"data/processed/{self.project_path}"
         self.zip_path = zip_path
         self.spreadsheet_path = spreadsheet_path
         self.extra_files = extra_files
@@ -108,8 +108,9 @@ class SubmissionsChecker():
             writer.writerow(
                 ["Username", "Mark", "Feedback"])
 
-        checker = importlib.import_module(f"{self.project}.marking.hw_checker")
+        checker = importlib.import_module(f"data.processed.{self.project}.hw_checker")
         # mark the assignments
+        print(os.getcwd())
         for student_id in os.listdir("."):
             if re.search(r'[a-zA-Z]', student_id): # Student folders are just their ID #s, so ignore things with letters
                 continue
@@ -151,8 +152,8 @@ class SubmissionsChecker():
         If you're debugging, update the permanent copies of the checkers, and run this to copy them into
             the working directory. Also used by self.set_up_working_directory
         """
-        shutil.copy(f"{self.project_path}/hw_checker.py", self.working_directory)
-        shutil.copy("bases/checker.py", self.working_directory)
+        shutil.copy(f"autograder/{self.project_path}/hw_checker.py", self.working_directory)
+        shutil.copy("autograder/bases/checker.py", self.working_directory)
         if self.extra_files is not None:
             for path in self.extra_files:
                 shutil.copy(path, self.working_directory)

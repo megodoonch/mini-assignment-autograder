@@ -17,7 +17,6 @@ class HWChecker(Checker):
         self.modules = ["my_number"]
         # the name of the directory, checker file, and csv file
         self.project = "digital_tools_1"
-        self.module_import_path = f'data.processed.{self.project}.{self.sid}.{self.module_name(0)}'
 
     def script_checker(self):
         """
@@ -56,7 +55,7 @@ class HWChecker(Checker):
         my_number should contain a number
         calling hooray(n) should print hooray! on n lines
         """
-        mod = importlib.import_module(self.module_import_path)
+        mod = importlib.import_module(self.module_import_path())
 
         try:
             n = mod.my_number
@@ -73,7 +72,7 @@ class HWChecker(Checker):
         try:
             output_capture = io.StringIO()
             sys.stdout = output_capture
-            mod = importlib.import_module(self.module_import_path)
+            mod = importlib.import_module(self.module_import_path())
             output_string = output_capture.getvalue()
             # print("output string", output_string, file=sys.stderr)
             if not output_string.lower().startswith("my favo"):

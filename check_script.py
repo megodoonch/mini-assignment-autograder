@@ -21,7 +21,7 @@ from autograder.all_submissions_checker import SubmissionsChecker
 import argparse
 
 # This is the parent directory where the output will be saved to. Update it for your system.
-local_marks_path = "/home/meaghan/Documents/uu_student_data/student-data/digital_tools/2023/minis/"
+local_marks_path = "results/digital_tools/2023"
 
 
 # get the command line arguments
