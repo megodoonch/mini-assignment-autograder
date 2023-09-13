@@ -1,4 +1,4 @@
-from bases.checker import *
+from autograder.bases.checker import *
 from collections import defaultdict
 
 
