@@ -11,3 +11,6 @@
 /autograder/favourite_number/marking/
 /autograder/module_script/marking/
 /autograder/nth/marking/
+autograder/__pycache__/all_submissions_checker.cpython-310.pyc
+autograder/bases/__pycache__/__init__.cpython-310.pyc
+autograder/bases/__pycache__/checker.cpython-310.pyc
